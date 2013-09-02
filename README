@@ -1,0 +1,22 @@
+/************************************************************************************************
+	ServerTastic HOSTBILL module																	
+	Module developed for HOTBILL that enables the ServerTastic Reseller functionality
+	to be integrated into the HOSTBILL software. Use of this code is at your own risk
+	and can be modified to suit your needs but please leave this block in place.
+	
+	In order to use the module you must be a registered ServerTastic Reseller and purchase points,
+ 	to regsiter, receive your API key and to purchase points please register at
+	https://www.servertastic.com/resellers/
+		
+	It is recommend that you consult the latest ServerTastic API docs prior to set-up of
+	configurable options https://www.servertastic.com/resellers/
+	
+	CHANGELOG: https://servertastic.codebasehq.com/changelog/hostbill/ssl
+	LATEST VERSION: https://servertastic.codebasehq.com/hostbill/ssl.svn
+	
+************************************************************************************************/
+
+
+** Installation Instructions **
+
+To install, upload class.servertastic_ssl.php and the servertastic_ssl folder to /includes/modules/Hosting/
