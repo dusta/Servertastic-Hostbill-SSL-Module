@@ -22,7 +22,7 @@
  *
  **********************************************************************/
 
-class servertastic_ssl extends HostingModule {
+class servertastic_ssl extends SslModule {
 
     protected $description='Servertastic SSL Module';
 
@@ -135,13 +135,25 @@ class servertastic_ssl extends HostingModule {
     
     protected $serverFieldsDescription = array(
         'username'  => 'API Key',
-        'ssl'       => 'Test mode',
+        'ssl'       => 'Test mode'
     );
         
-    protected $commands = array('Create', 'Terminate', 'ResendConfigurationEmail', 'synchInfo', 'Expire');
+    protected $commands = array('Create', 'Terminate', 'ResendConfigurationEmail', 'synchInfo', 'Expire', 'Renewal');
 
     private $api_key;
     private $test_mode;
+
+    // public function __construct(){
+    //     //var_dump(parent::__construct());
+    // }
+
+    public function Renewal(){
+
+    }
+
+    public function CertOptions($product){
+        var_dump($product);
+    }
 
     public function connect($connect) { 
 
@@ -298,7 +310,7 @@ class servertastic_ssl extends HostingModule {
         if ($this->details['option6']['value'] != 'Awaiting Configuration') {
 
         	$this->log('SSL Either not Provisioned or Not Awaiting Configuration so unable to cancel');
-            $this->addError("SSL Either not Provisioned or Not Awaiting Configuration so unable to cancel");
+            $this->addError('SSL Either not Provisioned or Not Awaiting Configuration so unable to cancel');
             return false;
             
         }
@@ -318,8 +330,8 @@ class servertastic_ssl extends HostingModule {
 
         }
 
-        $this->log('SSL Either not Provisioned or Not Awaiting Configuration so unable to cancel.'.json_encode($result));
-        $this->addError("SSL Either not Provisioned or Not Awaiting Configuration so unable to cancel");
+        $this->log('Error.'.json_encode($result));
+        $this->addError("Error");
         return false;
         
     }

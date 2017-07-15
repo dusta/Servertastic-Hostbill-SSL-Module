@@ -7,10 +7,10 @@ class servertastic_ssl_controller extends HBController {
         if($params['account']['status'] == 'Active') {
             //var_dump($params['account']);
 
-            $status = $params['account']['extra_details']['option6']
+            $status = $params['account']['extra_details']['option6'];
             
             $configuration = false;
-            if($status == 'Awaiting Configuration' OR $status == 'Order Placed' OR $status == 'Review Order') {
+            if($status == 'Awaiting Configuration' OR $status == 'Order placed' OR $status == 'Review order') {
                 $configuration = true;
             }
 
@@ -82,7 +82,7 @@ class servertastic_ssl_controller extends HBController {
                     $order['url']['configure'] = $params['account']['extra_details']['option12']; 
 
                 $this->template->assign('order', $order);
-                $this->template->assign('custom_template', APPDIR_MODULES.'Hosting/servertastic_ssl/admin/template.tpl');
+                //$this->template->assign('custom_template', APPDIR_MODULES.'Hosting/servertastic_ssl/admin/template.tpl');
 
             }
         //}
