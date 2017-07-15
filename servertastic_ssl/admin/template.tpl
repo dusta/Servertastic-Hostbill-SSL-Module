@@ -1,12 +1,15 @@
 <table>
     <tr>
         <td><strong>Configuration Status:</strong></td>
-        <td>{$remotestatus}</td>
+        <td>{$order.status}</td>
     </tr>
-{*     <tr>
-        <td><strong>Update Certificate Approver Email:</strong></td>
-        <td>
-            <form method="post"><input type="text" name="newapproveremail" /><input type="submit" value="Update" /></form>
-        </td>
-    </tr> *}
+
+    {if isset($order.url.configure) AND !empty(isset($order.url.configure))}
+    <tr>
+    	<td>Configuration Page</td>
+    	<td><a href="{$order.url.configure}" target="_blank">Configure Now</a></td>
+    </tr>
+    {/if}
 </table>
+
+

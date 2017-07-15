@@ -4,8 +4,20 @@ class servertastic_ssl_controller extends HBController {
 
     public function accountdetails($params) {
 
-        if($params['account']['status']=='Active') {
+        if($params['account']['status'] == 'Active') {
             //var_dump($params['account']);
+
+            $status = $params['account']['extra_details']['option6']
+            
+            $configuration = false;
+            if($status == 'Awaiting Configuration' OR $status == 'Order Placed' OR $status == 'Review Order') {
+                $configuration = true;
+            }
+
+            if($status == 'Cancelled' OR $status == 'Completed'){
+                //Something todo
+            }
+
 
             //if($params['account']['extra_details']['option4']){
                 // if($_POST["newapproveremail"]) {
@@ -63,9 +75,13 @@ class servertastic_ssl_controller extends HBController {
 
                 //}
 
-                $remotestatus = ' - <a href="'.$params['account']['extra_details']['option12'].'" target="_blank">Configure Now</a>'; 
+                $order = array();
+                $order['status'] = $status;
+                $order['url'] = array();
+                if($configuration == true)
+                    $order['url']['configure'] = $params['account']['extra_details']['option12']; 
 
-                $this->template->assign('remotestatus', $remotestatus);
+                $this->template->assign('order', $order);
                 $this->template->assign('custom_template', APPDIR_MODULES.'Hosting/servertastic_ssl/admin/template.tpl');
 
             }
